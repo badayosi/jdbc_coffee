@@ -9,7 +9,7 @@ import kr.or.dgit.jdbc_setting.service.ExportService;
 import kr.or.dgit.jdbc_setting.service.ImportService;
 import kr.or.dgit.jdbc_setting.service.InitService;
 
-public class TestMain {
+public class TestDBMain {
 
 	public static void main(String[] args) {
 		DBCon dbCon = DBCon.getInstance();

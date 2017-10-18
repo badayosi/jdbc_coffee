@@ -3,7 +3,7 @@ package kr.or.dgit.jdbc_setting;
 public class Config {
 	public static final String DB_NAME = "jdbc_coffee";
 
-	public static final String[] TABLE_NAME = { "product", "margin", "sale" };
+	public static final String[] TABLE_NAME = { "product", "income", "sale" };
 
 	private static final String USER_DIR = System.getProperty("user.dir") + "\\";
 
