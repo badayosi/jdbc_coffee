@@ -1,0 +1,35 @@
+-- db 존재하면 삭제
+drop database if exists jdbc_coffee;
+
+-- db 생성
+create database jdbc_coffee;
+
+-- db 사용
+use jdbc_coffee;
+
+-- 제품테이블(제품코드,제품명)
+create table if not exists jdbc_coffee.Product(
+	pdtno int(11) not null auto_increment,
+	pdtcode char(5),
+	pdtname char(10),
+	primary key(pdtno)
+);
+
+-- 마진테이블(제품단가,마진율)
+create table if not exists jdbc_coffee.Margin(
+	mgno int(11) not null auto_increment,
+	pdtprice int(11) default 0,
+	pdtmargin int(11) default 0,
+	pdtno int(11) default 0,
+	primary key(mgno),
+	foreign key (pdtno) references product(pdtno)
+);
+
+-- 판매테이블(판매수량)
+create table if not exists jdbc_coffee.Sale(
+	saleno int(11) not null auto_increment,
+	salecount int(11) default 0,
+	pdtno int(11) default 0,
+	primary key(saleno),
+	foreign key (pdtno) references product(pdtno)
+);
