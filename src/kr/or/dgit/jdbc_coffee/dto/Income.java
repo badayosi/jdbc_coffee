@@ -9,6 +9,16 @@ public class Income {
 	public Income() {
 
 	}
+	
+	public Income(String pCode) {
+		this.pCode = pCode;
+	}
+
+	public Income(String pCode, int pPrice, int pMargin) {
+		this.pCode = pCode;
+		this.pPrice = pPrice;
+		this.pMargin = pMargin;
+	}
 
 	// 메소드
 	public String getpCode() {

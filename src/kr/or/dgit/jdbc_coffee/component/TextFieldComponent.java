@@ -38,6 +38,10 @@ public class TextFieldComponent extends JPanel{
 	public JTextField getTextField() {
 		return textField;
 	}
+	
+	public String getText() {
+		return textField.getText();
+	}
 
 	public void setTextField(JTextField textField) {
 		this.textField = textField;
@@ -49,5 +53,9 @@ public class TextFieldComponent extends JPanel{
 	
 	public void setEnable(boolean set){
 		this.textField.setEnabled(set);
+	}
+	
+	public void clear(){
+		textField.setText("");
 	}
 }

@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.Vector;
 
 import javax.swing.JLabel;
@@ -33,7 +34,11 @@ public class ComboBoxComponent<T> extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()==comboBox){
-					parentPanel.changeNameField(comboBox.getSelectedItem());
+					try {
+						parentPanel.changeNameField(comboBox.getSelectedItem());
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
@@ -46,5 +51,9 @@ public class ComboBoxComponent<T> extends JPanel {
 
 	public void setParentPanel(InputView parentPanel) {
 		this.parentPanel = parentPanel;
+	}
+	
+	public String getProductCode(){
+		return String.valueOf(comboBox.getSelectedItem());
 	}
 }

@@ -8,6 +8,15 @@ public class Sale {
 	public Sale() {
 		
 	}
+	
+	public Sale(String pCode) {
+		this.pCode = pCode;
+	}
+	
+	public Sale(String pCode, int sCount) {
+		this.pCode = pCode;
+		this.sCount = sCount;
+	}
 
 	//메소드
 	public String getpCode() {

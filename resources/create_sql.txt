@@ -19,14 +19,14 @@ create table if not exists jdbc_coffee.Income(
 	pCode char(5),
 	pPrice int(11) default 0,
 	pMargin int(11) default 0,
-	primary key (pCode),
-	foreign key (pCode) references Product(pCode)	
+	primary key(pCode),
+	foreign key (pCode) references Product(pCode)
 );
 
 -- 판매테이블(판매수량)
 create table if not exists jdbc_coffee.Sale(
 	pCode char(5),	
 	sCount int(11) default 0,
-	primary key (pCode),
+	primary key(pCode),
 	foreign key (pCode) references Product(pCode)
 );

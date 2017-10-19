@@ -27,9 +27,22 @@ public class ProductDao extends AbstractDao<Product>{
 		String sql = "INSERT INTO product(pcode, pname) VALUES(?, ?)";
 		Connection con = DBCon.getInstance().getConnection();
 		try(PreparedStatement pstmt = con.prepareStatement(sql)){
-			pstmt.setString(0, item.getpCode());
-			pstmt.setString(1, item.getpName());
+			pstmt.setString(1, item.getpCode());
+			pstmt.setString(2, item.getpName());
+			pstmt.executeUpdate();
 		}
+	}
+	
+	@Override
+	public Product selectItemByCode(Product item) throws SQLException {
+		
+		return null;
+	}
+	
+	@Override
+	public void updateItem(Product item) throws SQLException {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	private Product getProduct(ResultSet rs) throws SQLException{
@@ -50,6 +63,4 @@ public class ProductDao extends AbstractDao<Product>{
 		}
 		return lists;
 	}
-
-	
 }
