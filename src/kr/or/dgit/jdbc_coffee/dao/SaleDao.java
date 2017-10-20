@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import kr.or.dgit.jdbc_coffee.dto.Sale;
 import kr.or.dgit.jdbc_setting.jdbc.DBCon;
@@ -63,5 +65,19 @@ public class SaleDao extends AbstractDao<Sale>{
 		String pCode = rs.getString("pCode");
 		int sCount = rs.getInt("sCount");
 		return new Sale(pCode, sCount);
+	}
+
+	@Override
+	public List<Sale> selectItemAll() throws SQLException {
+		String sql = "SELECT * FROM Sale";
+		List<Sale> lists = new ArrayList<>();
+		try(PreparedStatement pstmt = DBCon.getInstance().getConnection().prepareStatement(sql);){
+			try(ResultSet rs = pstmt.executeQuery();){
+				while(rs.next()){
+					lists.add(getSale(rs));
+				}
+			}
+		}
+		return lists;
 	}
 }

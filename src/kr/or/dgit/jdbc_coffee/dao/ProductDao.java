@@ -63,4 +63,9 @@ public class ProductDao extends AbstractDao<Product>{
 		}
 		return lists;
 	}
+
+	@Override
+	public List<Product> selectItemAll() throws SQLException {
+		return AllProduct();
+	}
 }

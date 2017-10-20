@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import kr.or.dgit.jdbc_coffee.dto.Income;
 import kr.or.dgit.jdbc_setting.jdbc.DBCon;
@@ -66,5 +68,17 @@ public class IncomeDao extends AbstractDao<Income>{
 		return new Income(pCode, pPrice, pMargin);
 	}
 
-	
+	@Override
+	public List<Income> selectItemAll() throws SQLException {
+		String sql = "SELECT * FROM income";
+		List<Income> lists = new ArrayList<>();
+		try(PreparedStatement pstmt = DBCon.getInstance().getConnection().prepareStatement(sql);){
+			try(ResultSet rs = pstmt.executeQuery();){
+				while(rs.next()){
+					lists.add(getIncome(rs));
+				}
+			}
+		}
+		return lists;
+	}	
 }

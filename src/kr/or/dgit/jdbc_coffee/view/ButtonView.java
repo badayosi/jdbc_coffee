@@ -44,11 +44,9 @@ public class ButtonView extends JPanel implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnPrintPrice) {
-			btnPrintPriceActionPerformed(e);
-		}
-		if (e.getSource() == btnPrintMargin) {
-			btnPrintMarginActionPerformed(e);
+		if ((e.getSource() == btnPrintPrice) || e.getSource() == btnPrintMargin) {
+			OutputView SaleRank = new OutputView(e.getActionCommand());
+			SaleRank.setVisible(true);
 		}
 		if (e.getSource() == btnNewProduct) {
 			InsertView newProduct = new InsertView();
@@ -64,11 +62,5 @@ public class ButtonView extends JPanel implements ActionListener {
 		if (e.getSource() == btnCancle) {
 			inView.viewClear();
 		}
-	}
-
-	protected void btnPrintMarginActionPerformed(ActionEvent e) {
-	}
-
-	protected void btnPrintPriceActionPerformed(ActionEvent e) {
 	}
 }
