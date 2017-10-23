@@ -41,13 +41,34 @@ public class ListSaleRank extends AbstractList {
 	protected Object[][] getData() {
 		List<Rank> lists = makeTotalLists(type);
 		sortByType(lists);
+		numberingAndResult(lists);
 
 		Object[][] datas = new Object[lists.size()][];
 		for (int i = 0; i < lists.size(); i++) {
 			Rank rTemp = lists.get(i);
 			datas[i] = rTemp.toArray();
+			if((lists.get(lists.size()-1).getType() == "result") && i == lists.size()-1){
+				datas[i][0] = "합계";
+			}
 		}
 		return datas;
+	}
+
+	private void numberingAndResult(List<Rank> lists) {
+		int number = 0;
+		int vSupply = 0;
+		int vSurtax = 0;
+		int vSaleprice = 0;
+		int vMargin = 0;
+		for(Rank ing:lists){
+			number++;
+			vSupply += ing.getvSupply();
+			vSurtax += ing.getvSurtax();
+			vSaleprice += ing.getvSaleprice();
+			vMargin += ing.getvMargin();
+			ing.setpRank(number);
+		}
+		lists.add(new Rank(vSupply, vSurtax, vSaleprice, vMargin, "result"));
 	}
 
 	@Override

@@ -20,6 +20,14 @@ public class Rank implements Comparable<Rank>{
 		
 	}
 
+	public Rank(int vSupply, int vSurtax, int vSaleprice, int vMargin, String type) {
+		this.vSupply = vSupply;
+		this.vSurtax = vSurtax;
+		this.vSaleprice = vSaleprice;
+		this.vMargin = vMargin;
+		this.type = type;
+	}
+
 	public Rank(int pRank, String pCode, String pName, int pPrice, int pMargin, int sCount, String type) {
 		this.pRank = pRank;
 		this.pCode = pCode;
@@ -39,6 +47,50 @@ public class Rank implements Comparable<Rank>{
 		this.vMargin = Math.round(this.vSupply * this.pMargin);
 	}
 	
+	public void setpRank(int pRank) {
+		this.pRank = pRank;
+	}
+	
+	public int getvSupply() {
+		return vSupply;
+	}
+
+	public void setvSupply(int vSupply) {
+		this.vSupply = vSupply;
+	}
+
+	public int getvSurtax() {
+		return vSurtax;
+	}
+
+	public void setvSurtax(int vSurtax) {
+		this.vSurtax = vSurtax;
+	}
+
+	public int getvSaleprice() {
+		return vSaleprice;
+	}
+
+	public void setvSaleprice(int vSaleprice) {
+		this.vSaleprice = vSaleprice;
+	}
+
+	public int getvMargin() {
+		return vMargin;
+	}
+
+	public void setvMargin(int vMargin) {
+		this.vMargin = vMargin;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public Object[] toArray() {
 		return new Object[]{
 				pRank,
